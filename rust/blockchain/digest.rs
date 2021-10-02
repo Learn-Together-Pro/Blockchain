@@ -107,11 +107,6 @@ pub fn hash_every< T : serde::Serialize + fmt::Debug >( _items : &Vec< T > ) -> 
 
 pub fn bytes_to_string_hex( src : &[ u8 ] ) -> String
 {
-  /*
-  issue : https://github.com/Learn-Together-Pro/Blockchain/issues/10
-  complexity : difficult
-  stage : early
-  */
   src.into_iter().fold(String::new(), |mut hex, byte| {
     hex.push_str(&format!("{:X}", byte));
     hex
