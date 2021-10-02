@@ -54,8 +54,8 @@ impl Chain
   pub fn hash_last( &self ) -> Digest
   {
     let last_block = &self
-                                  .blocks
-                                  .last();
+                                                  .blocks
+                                                  .last();
     let last_block_hash: Digest = match last_block {
       Some(last_block) => last_block.to_owned().merkle_hash.clone(),
       None => {
