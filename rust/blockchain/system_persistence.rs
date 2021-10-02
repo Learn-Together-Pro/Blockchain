@@ -25,12 +25,9 @@ impl System
 
   pub fn MakePersistant() -> System
   {
-    Self::new()
-    /*
-    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/12
-    complexity : easy
-    stage : mid
-    */
+    let sys = Self::new();
+    sys.store();
+    sys
   }
 
   //
