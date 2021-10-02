@@ -3,6 +3,8 @@
 !/.circleci
 !/.*
 
+.DS_Store
+
 /_*
 /build
 /builder
