@@ -112,13 +112,22 @@ fn command_system_log( sys : &System )
 
 //
 
-fn command_system_difficulty( _sys : &mut System )
-{
-  /*
-  issue : https://github.com/Learn-Together-Pro/Blockchain/issues/15
-  complexity : easy
-  stage : early
-  */
+fn command_system_difficulty(_sys: &mut System) {
+    /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/15
+    complexity : easy
+    stage : early
+    */
+    let difficulty = wca::input::ask("\nPlease enter difficulty of chain");
+    match difficulty.parse::<u32>() {
+        Ok(i) => {
+          _sys.chain.difficulty = i;
+        },
+        Err(..) => {
+          println!("This was not an integer: {}", difficulty);
+          command_system_difficulty(_sys);
+        }
+    };
 }
 
 //
