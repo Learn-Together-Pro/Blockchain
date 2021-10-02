@@ -20,12 +20,11 @@ use blockchain::system::*;
 fn main()
 {
 
-  let mut sys = System::Make();
-  /*
-    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/21
-    complexity : mid
-    stage : mid
-  */
+  let sys_load = System::Load();
+  let mut sys = match sys_load {
+      Ok(system) => system,
+      Err(_) => System::MakePersistant(),
+  };
   let mut choice;
 
   loop
