@@ -108,7 +108,7 @@ pub fn hash_every< T : serde::Serialize + fmt::Debug >( _items : &Vec< T > ) -> 
 pub fn bytes_to_string_hex( src : &[ u8 ] ) -> String
 {
   src.into_iter().fold(String::new(), |mut hex, byte| {
-    hex.push_str(&format!("{:X}", byte));
+    hex.push_str(&format!("{:02X}", byte));
     hex
   })
 }
@@ -133,6 +133,6 @@ mod tests {
   #[test]
   fn test_bytes_to_string_hex() {
     let src = [5, 23, 255, 143, 64, 128];
-    assert_eq!("517FF8F4080".to_owned(), bytes_to_string_hex(&src));
+    assert_eq!("0517FF8F4080".to_owned(), bytes_to_string_hex(&src));
   }
 }
