@@ -105,14 +105,17 @@ pub fn hash_every< T : serde::Serialize + fmt::Debug >( _items : &Vec< T > ) -> 
 
 //
 
-pub fn bytes_to_string_hex( _src : &[ u8 ] ) -> String
+pub fn bytes_to_string_hex( src : &[ u8 ] ) -> String
 {
   /*
   issue : https://github.com/Learn-Together-Pro/Blockchain/issues/10
   complexity : difficult
   stage : early
   */
-  String::new()
+  src.into_iter().fold(String::new(), |mut hex, byte| {
+    hex.push_str(&format!("{:X}", byte));
+    hex
+  })
 }
 
 //
@@ -126,4 +129,15 @@ pub fn merkle_calc( _transactions : &Vec< Transaction > ) -> Digest
   complexity : mid
   stage : early
   */
+}
+
+#[cfg(test)]
+mod tests {
+  use crate::blockchain::digest::bytes_to_string_hex;
+
+  #[test]
+  fn test_bytes_to_string_hex() {
+    let src = [5, 23, 255, 143, 64, 128];
+    assert_eq!("517FF8F4080".to_owned(), bytes_to_string_hex(&src));
+  }
 }
