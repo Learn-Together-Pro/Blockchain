@@ -53,13 +53,17 @@ impl Chain
 
   pub fn hash_last( &self ) -> Digest
   {
-    /*
-    Issue : https://github.com/Learn-Together-Pro/Blockchain/issues/9
-    complexity : easy
-    stage : early
-    */
-    let zero : Vec< u8 > = [ 0 ; 32 ].into();
-    Digest::from( zero.clone() )
+    let last_block = &self
+                                                  .blocks
+                                                  .last();
+    let last_block_hash: Digest = match last_block {
+      Some(last_block) => last_block.to_owned().body.hash.clone(),
+      None => {
+        let zero : Vec< u8 > = [ 0 ; 32 ].into();
+        Digest::from( zero.clone() )
+      }
+    };
+    last_block_hash
   }
 
   //
