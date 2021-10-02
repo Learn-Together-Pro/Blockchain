@@ -34,18 +34,20 @@ impl Chain
 
     Chain
     {
-      blocks : Vec::new(),
+      blocks : vec![Block
+                    {
+                      time: wt::time::s::now(),
+                      nonce: 0,
+                      pre_hash: Digest::new(),
+                      merkle_hash: Digest::new(),
+                      difficulty: 2,
+                      body: BlockBody{transactions: Vec::new(), hash: Digest::new()}
+                    }],
       transactions_pool : HashMap::new(),
       difficulty : 2,
       miner_addr : "Miner1".to_string(),
       reward : 100.0
     }
-
-    /*
-    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/19
-    complexity : mid
-    stage : early
-    */
 
   }
 
