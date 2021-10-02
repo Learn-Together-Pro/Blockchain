@@ -117,13 +117,15 @@ pub fn bytes_to_string_hex( _src : &[ u8 ] ) -> String
 
 //
 
-pub fn merkle_calc( _transactions : &Vec< Transaction > ) -> Digest
+pub fn merkle_calc( transactions : &Vec< Transaction > ) -> Digest
 {
-  let zero : Vec< u8 > = [ 0 ; 64 ].into();
-  zero.into()
   /*
   issue : https://github.com/Learn-Together-Pro/Blockchain/issues/6
   complexity : mid
   stage : early
   */
+
+  let v = transactions.iter().map(|t| t.body.hash.clone()).collect();
+
+  hash_every(&v)
 }
