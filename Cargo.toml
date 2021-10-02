@@ -1,0 +1,56 @@
+[package]
+name = "lt_blockchain"
+version = "0.1.0"
+edition = "2018"
+authors = [ "Learn Together Community" ]
+license = "MIT"
+readme = "Readme.md"
+documentation = "https://docs.rs/lt_blockchain"
+repository = "https://github.com/Learn-Together-Pro/LtBlockchain"
+homepage = "https://github.com/Learn-Together-Pro/LtBlockchain"
+description = """
+Blockchain written with educational purpose by Learn Together Community.
+"""
+categories = []
+keywords = [ "blockchain", "from-skratch", "pow" ]
+
+include = [
+  "/rust",
+  "/Cargo.toml",
+  "/Readme.md",
+]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "lt_blockchain"
+path = "rust/mod.rs"
+
+[[bin]]
+name = "lt_blockchain_app"
+path = "rust/main.rs"
+
+[[test]]
+name = "lt_blockchain_test"
+path = "rust/blockchain/test/mod.rs"
+
+[dependencies]
+chrono="0.4.9"
+serde="1.0.130"
+serde_derive="1.0.130"
+serde_json="1.0.67"
+sha2="0.9.6"
+maplit="1.0.2"
+threadpool="1.8.1"
+rand = "0.8.4"
+rsa = "0.5.0"
+anyhow="1.0.44"
+wtools="0.1.0"
+wca="0.1.0"
+
+[dependencies.serde_with]
+version = "1.10.0"
+features = [ "json" ]
+
+[profile.dev.package.num-bigint-dig]
+opt-level = 3
