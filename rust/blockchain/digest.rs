@@ -72,7 +72,7 @@ impl Digest
 
   pub fn new() -> Self
   {
-    Self ( Vec::new() )
+    Self ( vec![0; 32] )
   }
 
 }

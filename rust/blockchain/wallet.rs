@@ -43,8 +43,7 @@ impl Wallet
     complexity : mid
     stage : mid
     */
-    let zero : Vec< u8 > = [ 0 ; 64 ].into();
-    ( Digest::from( zero.clone() ), Digest::from( zero.clone() ) )
+    ( Digest::new() , Digest::new() )
   }
 
   //
