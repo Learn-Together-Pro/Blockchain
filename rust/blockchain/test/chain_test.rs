@@ -254,6 +254,8 @@ fn hash_last()
 
   println!( "genesis block and mined block" );
   let mut chain = chain::Chain::new( vec![] );
+  let transaction = transaction_empty_create();
+  chain.transactions_pool.insert( digest::Digest::from( Vec::from([ 0u8 ; 32 ]) ), transaction );
   let block = chain.block_mine().unwrap();
   chain.block_add( block.clone() );
   let hash = chain.hash_last();
@@ -264,3 +266,71 @@ fn hash_last()
   for _i in 0..difficulty { exp.push( 0 ) }
   assert_eq!( hash[ 0..difficulty ], exp );
 }
+
+//
+
+#[ test ]
+fn block_mine()
+{
+  println!( "no transactions in transactions_pool" );
+  let chain = chain::Chain::new( vec![] );
+  let block = chain.block_mine();
+  assert!( block.is_none() );
+
+  println!( "genesis block and mined block" );
+  let mut chain = chain::Chain::new( vec![] );
+  let transaction = transaction_empty_create();
+  chain.transactions_pool.insert( digest::Digest::from( Vec::from([ 0u8 ; 32 ]) ), transaction );
+  let block = chain.block_mine();
+  assert_eq!( chain.transactions_pool.len(), 1 );
+  assert!( block.is_some() );
+  let block = block.unwrap();
+  assert_eq!( block.merkle_hash, digest::merkle_calc( &block.body.transactions ) );
+  let difficulty = block.difficulty as usize;
+  let mut exp : Vec<u8> = vec![];
+  for _i in 0..difficulty { exp.push( 0 ) }
+  assert_eq!( block.body.hash[ 0..difficulty ], exp );
+  assert_eq!( block.pre_hash.len(), 32 );
+  assert_eq!( block.pre_hash[ 0..difficulty ], exp );
+}
+
+//
+
+#[ test ]
+fn block_add()
+{
+  println!( "mined block from all transactions mined block" );
+  let mut chain = chain::Chain::new( vec![] );
+  let mut transaction = transaction_empty_create();
+  transaction.body.hash = digest::Digest::from( Vec::from([ 0u8 ; 32 ]) );
+  chain.transactions_pool.insert( digest::Digest::from( Vec::from([ 0u8 ; 32 ]) ), transaction );
+  let block = chain.block_mine().unwrap();
+  assert_eq!( chain.transactions_pool.len(), 1 );
+  assert_eq!( chain.blocks.len(), 1 );
+  chain.block_add( block.clone() );
+  assert_eq!( chain.transactions_pool.len(), 0 );
+  assert_eq!( chain.blocks.len(), 2 );
+  assert_eq!( chain.blocks[ 1 ], block.clone() );
+
+  println!( "transaction is added before block is added to chain" );
+  let mut chain = chain::Chain::new( vec![] );
+  let mut transaction = transaction_empty_create();
+  transaction.body.hash = digest::Digest::from( Vec::from([ 0u8 ; 32 ]) );
+  chain.transactions_pool.insert( digest::Digest::from( Vec::from([ 0u8 ; 32 ]) ), transaction );
+  let block = chain.block_mine().unwrap();
+  assert_eq!( chain.transactions_pool.len(), 1 );
+  assert_eq!( chain.blocks.len(), 1 );
+  let mut transaction = transaction_empty_create();
+  transaction.body.hash = digest::Digest::from( Vec::from([ 1u8 ; 32 ]) );
+  chain.transactions_pool.insert( digest::Digest::from( Vec::from([ 1u8 ; 32 ]) ), transaction.clone() );
+  assert_eq!( chain.transactions_pool.len(), 2 );
+  chain.block_add( block.clone() );
+  assert_eq!( chain.transactions_pool.len(), 1 );
+  for t in chain.transactions_pool.values()
+  {
+    assert_eq!( t.clone(), transaction.clone() );
+  }
+  assert_eq!( chain.blocks.len(), 2 );
+  assert_eq!( chain.blocks[ 1 ], block.clone() );
+}
+
