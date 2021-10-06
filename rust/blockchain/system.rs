@@ -19,9 +19,18 @@ impl System
 {
   pub fn new() -> System
   {
+    /*
+    Issue : https://github.com/Learn-Together-Pro/Blockchain/issues/33
+    complexity : difficult
+    stage : mid
+    */
+
     let store_path = Self::StorePathDefault();
     let wallets = HashMap::new();
-    let chain = Chain::new();
+    let chain = Chain::new( vec![] );
+
+    /* */
+
     System
     {
       chain,
@@ -29,5 +38,4 @@ impl System
       store_path,
     }
   }
-
 }
