@@ -4,10 +4,10 @@
 use std::collections::HashMap;
 use std::str;
 
-use rsa::RsaPublicKey;
-use rsa::pkcs1::{ToRsaPrivateKey, ToRsaPublicKey};
-use rsa::{PublicKey, RsaPrivateKey, PaddingScheme};
+
 use rand::rngs::OsRng;
+use rsa::pkcs1::{ToRsaPrivateKey, ToRsaPublicKey};
+use rsa::{RsaPublicKey, RsaPrivateKey};
 
 use super::digest::*;
 use super::system::*;
