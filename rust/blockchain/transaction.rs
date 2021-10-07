@@ -117,14 +117,33 @@ impl Chain
 
   //
 
-  pub fn transaction_create( &mut self, _sender : Digest, _receiver : Digest, _amount : f64 )
-  {
-    /*
-    Issue : https://github.com/Learn-Together-Pro/Blockchain/issues/7
-    complexity : difficult
-    stage : mid
-    */
-    unimplemented!( "not implemented" );
+  pub fn transaction_create( &mut self, sender : Digest, _receiver : Digest, amount : f64 )
+  {  
+    //1. Go to system and check sender amount -> print("Not Enough money")
+    let availableBalance = self.balance_get(&sender);
+
+    if availableBalance >= amount {
+
+      //2. Transaction create && Send remainig money to sender
+      let mut receiver: HashMap<Digest, f64> = HashMap::new();
+      receiver.insert(_receiver, amount);
+      receiver.insert(sender.clone(), availableBalance - &amount);
+      let time = wt::time::s::now();
+
+      let transaction = TransactionHeader {
+        sender: sender.clone(),
+        receiver,
+        amount,
+        time,
+        body:()
+      };
+   
+       //3. Add to pool
+      self.transactions_pool.insert(sender,transaction.form());
+
+    } else {
+      println!("Not Enough money")
+    }
   }
 
   //
