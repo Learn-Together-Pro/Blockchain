@@ -10,6 +10,8 @@ use anyhow::Result;
 use serde_json;
 
 use super::system::*;
+use std::fs::File;
+use std::io::Write;
 
 impl System
 {
@@ -71,13 +73,23 @@ impl System
 
   //
 
-  pub fn store_to( &self, _path : &PathBuf )
+  pub fn store_to( &self, path : &PathBuf )
   {
-    /*
-    Issue : https://github.com/Learn-Together-Pro/Blockchain/issues/11
-    complexity : mid
-    stage : mid
-    */
+    let data = serde_json::to_string(self);
+    if data.is_err() {
+      eprintln!("Can not format System as JSON: {:?}", data.unwrap_err());
+      return;
+    }
+    let file = File::create(path);
+    if file.is_err() {
+      eprintln!("Can not create file: {:?}", file.unwrap_err());
+      return;
+    }
+    let mut file = file.unwrap();
+    let res = file.write_all(data.unwrap().as_bytes());
+    if res.is_err() {
+      eprintln!("Can not write to the file: {:?}", res.unwrap_err());
+    }
   }
 
   //
