@@ -52,5 +52,8 @@ wca="0.1.0"
 version = "1.10.0"
 features = [ "json" ]
 
+[dev-dependencies]
+serial_test = "*"
+
 [profile.dev.package.num-bigint-dig]
 opt-level = 3

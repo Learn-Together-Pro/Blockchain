@@ -29,7 +29,7 @@ impl Chain
 
   //
 
-  pub fn new() -> Chain
+  pub fn new( _transactions : Vec<Transaction> ) -> Chain
   {
 
     Chain

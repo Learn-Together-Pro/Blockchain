@@ -4,6 +4,11 @@
 use std::collections::HashMap;
 use std::str;
 
+
+use rand::rngs::OsRng;
+use rsa::pkcs1::{ToRsaPrivateKey, ToRsaPublicKey};
+use rsa::{RsaPrivateKey};
+
 use super::digest::*;
 use super::system::*;
 
@@ -43,7 +48,19 @@ impl Wallet
     complexity : mid
     stage : mid
     */
-    ( Digest::new() , Digest::new() )
+
+    let mut rng = OsRng;
+    let bits = 2048;
+
+    let private_key = RsaPrivateKey::new(&mut rng, bits)
+    .expect("failed to generate private key");
+    let pub_key = RsaPrivateKey::to_public_key(&private_key).to_pkcs1_pem()
+    .expect("failed to generate public key");
+    let private_key_pem = private_key.to_pkcs1_pem()
+    .expect("failed to convert private to pem");
+    ( Digest::from(private_key_pem.as_bytes().to_vec()), Digest::from( pub_key.as_bytes().to_vec() ))
+
+
   }
 
   //
