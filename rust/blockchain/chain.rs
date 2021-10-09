@@ -41,7 +41,7 @@ impl Chain
                       pre_hash: Digest::new(),
                       merkle_hash: Digest::new(),
                       difficulty: 2,
-                      body: BlockBody{transactions: Vec::new(), hash: Digest::new()}
+                      body: BlockBody{transactions: _transactions, hash: Digest::new()}
                     }],
       transactions_pool : HashMap::new(),
       difficulty : 2,
