@@ -38,7 +38,7 @@ impl Chain
                     {
                       time: wt::time::s::now(),
                       nonce: 0,
-                      pre_hash: Digest::new(),
+                      pre_hash: vec![0u8; 32].into(),
                       merkle_hash: Digest::new(),
                       difficulty: 2,
                       body: BlockBody{transactions: _transactions, hash: Digest::new()}
