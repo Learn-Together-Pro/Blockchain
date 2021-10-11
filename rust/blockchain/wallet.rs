@@ -4,10 +4,10 @@
 use std::collections::HashMap;
 use std::str;
 
-use rsa::RsaPublicKey;
-use rsa::pkcs1::{ToRsaPrivateKey, ToRsaPublicKey};
-use rsa::{PublicKey, RsaPrivateKey, PaddingScheme};
+
 use rand::rngs::OsRng;
+use rsa::pkcs1::{ToRsaPrivateKey, ToRsaPublicKey};
+use rsa::{RsaPrivateKey};
 
 use super::digest::*;
 use super::system::*;
@@ -54,7 +54,7 @@ impl Wallet
 
     let private_key = RsaPrivateKey::new(&mut rng, bits)
     .expect("failed to generate private key");
-    let pub_key = RsaPublicKey::from(&private_key).to_pkcs1_pem()
+    let pub_key = RsaPrivateKey::to_public_key(&private_key).to_pkcs1_pem()
     .expect("failed to generate public key");
     let private_key_pem = private_key.to_pkcs1_pem()
     .expect("failed to convert private to pem");
