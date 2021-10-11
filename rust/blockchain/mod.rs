@@ -9,6 +9,7 @@ use super::wt;
 pub mod block;
 pub mod chain;
 pub mod digest;
+pub mod miner;
 pub mod transaction;
 pub mod wallet;
 pub mod system;

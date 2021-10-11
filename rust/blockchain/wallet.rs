@@ -14,7 +14,7 @@ use super::system::*;
 
 //
 
-#[ derive( Debug, Clone, Serialize, Deserialize ) ]
+#[ derive( Debug, Clone, Serialize, Deserialize, PartialEq ) ]
 pub struct Wallet
 {
   pub name : String,
@@ -41,7 +41,7 @@ impl Wallet
 
   //
 
-  fn keys_pair_generate() -> ( Digest, Digest )
+  pub fn keys_pair_generate() -> ( Digest, Digest )
   {
     /*
     issue : https://github.com/Learn-Together-Pro/Blockchain/issues/3
