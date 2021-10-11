@@ -13,7 +13,7 @@ use super::chain::*;
 
 #[ serde_as ]
 #[ repr( C ) ]
-#[ derive( Debug, Clone, Serialize, Deserialize ) ]
+#[ derive( Debug, Clone, Serialize, Deserialize, PartialEq ) ]
 pub struct TransactionGeneric< T : ?Sized >
 {
   pub sender : Digest,
@@ -28,7 +28,7 @@ pub type TransactionHeader = TransactionGeneric< () >;
 
 //
 
-#[ derive( Debug, Clone, Serialize, Deserialize ) ]
+#[ derive( Debug, Clone, Serialize, Deserialize, PartialEq ) ]
 pub struct TransactionRestricts
 {
   pub hash : Digest,
@@ -61,6 +61,31 @@ impl Transaction
       time : body.time,
       body : TransactionRestricts{ hash },
     }
+  }
+
+  //
+
+  pub fn header( &self ) -> &TransactionHeader
+  {
+    self.borrow()
+  }
+
+  //
+
+  pub fn header_mut( &mut self ) -> &mut TransactionHeader
+  {
+    self.borrow_mut()
+  }
+
+  //
+
+  pub fn valid_is( &self ) -> bool
+  {
+    if hash_single( &self.header() ) != self.body.hash
+    {
+      return false;
+    }
+    true
   }
 }
 
@@ -129,7 +154,7 @@ impl Chain
 
   //
 
-  pub fn balance_get( &mut self, _public_key : &Digest ) -> f64
+  pub fn balance_get( &self, _public_key : &Digest ) -> f64
   {
     1.0
     /*

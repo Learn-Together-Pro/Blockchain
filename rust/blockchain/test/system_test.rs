@@ -4,7 +4,7 @@
 use std::fs;
 use serial_test::*;
 
-use lt_blockchain::blockchain::system;
+use lt_blockchain::blockchain::{ digest, system };
 
 //
 
@@ -20,6 +20,35 @@ fn new()
   let wallet = system.wallets.get( &String::from( "root" ) );
   assert_eq!( wallet.is_some(), true );
   assert_eq!( system.chain.balance_get( &wallet.unwrap().public_key.clone() ), system::START_AMOUNT );
+}
+
+//
+
+#[ test ]
+fn valid_is()
+{
+  let system_original = system::System::new();
+
+  /* */
+
+  println!( "valid system" );
+  let system = system_original.clone();
+  let got = system.valid_is();
+  assert_eq!( got, true );
+
+  println!( "system has no root wallet" );
+  let mut system = system_original.clone();
+  system.wallets.remove( &String::from( "root" ) ).unwrap();
+  let got = system.valid_is();
+  assert_eq!( got, false );
+
+  println!( "system has invalid public key of root wallet" );
+  let mut system = system_original.clone();
+  let key = digest::Digest::from( Vec::from([ 0u8 ; 270 ]) );
+  let mut root_wallet = system.wallets.get_mut( &String::from( "root" ) ).unwrap();
+  root_wallet.public_key = key;
+  let got = system.valid_is();
+  assert_eq!( got, false );
 }
 
 //
