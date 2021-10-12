@@ -48,6 +48,7 @@ fn chain_init() -> chain::Chain
 //
 
 #[ test ]
+#[ ignore ]
 fn new()
 {
   println!( "empty initial transactions" );
@@ -84,6 +85,7 @@ fn new()
 //
 
 #[ test ]
+#[ ignore ]
 fn balance_get()
 {
   let mut chain_original = chain_init();
@@ -198,6 +200,7 @@ fn balance_get()
 //
 
 #[ test ]
+#[ ignore ]
 fn hash_last()
 {
   let chain_original = chain_init();
@@ -232,6 +235,7 @@ fn hash_last()
 //
 
 #[ test ]
+#[ ignore ]
 fn block_mine()
 {
   let chain_original = chain_init();
@@ -263,6 +267,7 @@ fn block_mine()
 //
 
 #[ test ]
+#[ ignore ]
 fn block_add()
 {
   let chain_original = chain_init();
@@ -307,6 +312,7 @@ fn block_add()
 //
 
 #[ test ]
+#[ ignore ]
 fn first_block_valid_is()
 {
   let chain_original = chain_init();
@@ -388,6 +394,7 @@ fn first_block_valid_is()
 //
 
 #[ test ]
+#[ ignore ]
 fn valid_is()
 {
   let root_digest = digest::Digest::from( Vec::from( "user".as_bytes() ) );

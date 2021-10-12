@@ -58,7 +58,7 @@ impl Wallet
     .expect("failed to generate public key");
     let private_key_pem = private_key.to_pkcs1_pem()
     .expect("failed to convert private to pem");
-    ( Digest::from(private_key_pem.as_bytes().to_vec()), Digest::from( pub_key.as_bytes().to_vec() ))
+    ( Digest::from(pub_key.as_bytes().to_vec()), Digest::from( private_key_pem.as_bytes().to_vec() ))
 
 
   }

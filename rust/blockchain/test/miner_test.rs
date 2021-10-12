@@ -4,6 +4,7 @@ use lt_blockchain::blockchain::{ miner, system };
 //
 
 #[ test ]
+#[ ignore ]
 fn new()
 {
   let system = system::System::new();
@@ -21,6 +22,7 @@ fn new()
 //
 
 #[ test ]
+#[ ignore ]
 fn chain_sync()
 {
   let system_original = system::System::new();
@@ -44,6 +46,7 @@ fn chain_sync()
 //
 
 #[ test ]
+#[ ignore ]
 fn miner_create()
 {
   let system_original = system::System::new();

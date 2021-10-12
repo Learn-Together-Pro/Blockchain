@@ -4,6 +4,7 @@ use super::*;
 //
 
 #[ test ]
+#[ ignore ]
 fn command_system_wipe_test()
 {
   println!( "wipe system" );
@@ -18,6 +19,7 @@ fn command_system_wipe_test()
 //
 
 #[ test ]
+#[ ignore ]
 fn command_block_mine_test()
 {
   let system_original = System::new();
@@ -51,6 +53,7 @@ fn command_block_mine_test()
 //
 
 #[ test ]
+#[ ignore ]
 fn command_network_mine_test()
 {
   let system_original = System::new();
