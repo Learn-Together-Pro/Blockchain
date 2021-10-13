@@ -16,7 +16,7 @@ fn new()
     To run test enter :
     cargo test wallet_test::new -- --ignored
 
-    When test will pass, remove directive `#[ ignore ]`.
+    When test will pass, comment out directive `#[ ignore ]`.
   */
 
   println!( "add wallet to empty map" );
@@ -71,7 +71,7 @@ fn keys_pair_generate()
     To run test enter :
     cargo test wallet_test::keys_pair_generate -- --ignored
 
-    When test will pass, remove directive `#[ ignore ]`.
+    When test will pass, comment out directive `#[ ignore ]`.
   */
 
   println!( "generate pair of keys" );

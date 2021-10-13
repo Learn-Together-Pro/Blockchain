@@ -111,7 +111,7 @@ fn transaction_create_from_chain()
     To run test enter :
     cargo test transaction_test::transaction_create_from_chain -- --ignored
 
-    When test will pass, remove directive `#[ ignore ]`.
+    When test will pass, comment out directive `#[ ignore ]`.
   */
 
   let sender = digest::Digest::from( Vec::from( "user".as_bytes() ) );
@@ -192,7 +192,7 @@ fn balance_get()
     To run test enter :
     cargo test transaction_test::balance_get -- --ignored
 
-    When test will pass, remove directive `#[ ignore ]`.
+    When test will pass, comment out directive `#[ ignore ]`.
   */
 
   let root_digest = digest::Digest::from( Vec::from( "user".as_bytes() ) );

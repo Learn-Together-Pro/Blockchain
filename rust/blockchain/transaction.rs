@@ -196,7 +196,7 @@ impl Chain
     1.0
     /*
     issue : https://github.com/Learn-Together-Pro/Blockchain/issues/1
-    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/transaction_test.rs#L178
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/transaction_test.rs#L187
     complexity : difficult
     stage : late
     */

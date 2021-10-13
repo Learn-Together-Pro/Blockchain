@@ -26,7 +26,8 @@ impl System
   pub fn new() -> System
   {
     /*
-    Issue : https://github.com/Learn-Together-Pro/Blockchain/issues/33
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/33
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/system_test.rs#L13
     complexity : difficult
     stage : mid
     */

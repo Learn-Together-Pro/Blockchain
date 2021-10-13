@@ -41,7 +41,7 @@ fn hash_single()
     To run test enter :
     cargo test digest_test::hash_single -- --ignored
 
-    When test will pass, remove directive `#[ ignore ]`.
+    When test will pass, comment out directive `#[ ignore ]`.
   */
 
   #[ derive( Clone, Serialize, Deserialize ) ]
@@ -91,6 +91,15 @@ fn hash_single()
 #[ ignore ]
 fn hash_every()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/8
+
+    To run test enter :
+    cargo test digest_test::hash_every -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   #[ derive( Debug, Clone, Serialize, Deserialize ) ]
   struct A
   {
@@ -122,6 +131,15 @@ fn hash_every()
 #[ ignore ]
 fn bytes_to_string_hex()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/10
+
+    To run test enter :
+    cargo test digest_test::bytes_to_string_hex -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   println!( "convert vector of bytes to string" );
   let src = vec![ 5, 23, 255, 143, 64, 128 ];
   let got = digest::bytes_to_string_hex( &src );
@@ -140,7 +158,7 @@ fn merkle_calc()
     To run test enter :
     cargo test digest_test::merkle_calc -- --ignored
 
-    When test will pass, remove directive `#[ ignore ]`.
+    When test will pass, comment out directive `#[ ignore ]`.
   */
 
   fn transaction_empty_create() -> transaction::Transaction

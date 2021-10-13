@@ -42,7 +42,7 @@ fn proof_of_work()
     To run test enter :
     cargo test block_test::proof_of_work -- --ignored
 
-    When test will pass, remove directive `#[ ignore ]`.
+    When test will pass, comment out directive `#[ ignore ]`.
   */
 
   println!( "not formed block" );

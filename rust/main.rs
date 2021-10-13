@@ -178,7 +178,7 @@ fn command_block_mine( sys : &mut System )
 fn command_wallet_create( _sys : &mut System )
 {
   /*
-  Issue : https://github.com/Learn-Together-Pro/Blockchain/issues/17
+  issue : https://github.com/Learn-Together-Pro/Blockchain/issues/17
   complexity : easy
   stage : late
   */
@@ -189,7 +189,7 @@ fn command_wallet_create( _sys : &mut System )
 fn command_wallet_log( _sys : &mut System )
 {
   /*
-  Issue : https://github.com/Learn-Together-Pro/Blockchain/issues/20
+  issue : https://github.com/Learn-Together-Pro/Blockchain/issues/20
   complexity : easy
   stage : late
   */

@@ -46,7 +46,7 @@ impl Wallet
   {
     /*
     issue : https://github.com/Learn-Together-Pro/Blockchain/issues/3
-    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/wallet_test.rs#L57
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/wallet_test.rs#L66
     complexity : mid
     stage : mid
     */

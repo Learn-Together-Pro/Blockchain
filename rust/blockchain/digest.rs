@@ -97,6 +97,7 @@ pub fn hash_every< T : serde::Serialize + fmt::Debug >( _items : &Vec< T > ) -> 
 {
   /*
     issue : https://github.com/Learn-Together-Pro/Blockchain/issues/8
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/digest_test.rs#L92
     complexity : medium
     stage : early
   */
@@ -108,6 +109,12 @@ pub fn hash_every< T : serde::Serialize + fmt::Debug >( _items : &Vec< T > ) -> 
 
 pub fn bytes_to_string_hex( src : &[ u8 ] ) -> String
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/10
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/digest_test.rs#L132
+    complexity : medium
+    stage : early
+  */
   src.into_iter().fold(String::new(), |mut hex, byte| {
     hex.push_str(&format!("{:02X}", byte));
     hex
@@ -120,7 +127,7 @@ pub fn merkle_calc( transactions : &Vec< Transaction > ) -> Digest
 {
   /*
   issue : https://github.com/Learn-Together-Pro/Blockchain/issues/6
-  test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/digest_test.rs#L135
+  test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/digest_test.rs#L153
   complexity : mid
   stage : early
   */

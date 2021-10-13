@@ -44,6 +44,7 @@ impl Chain
 
     /*
     issue : https://github.com/Learn-Together-Pro/Blockchain/issues/19
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/system_test.rs#L52
     complexity : mid
     stage : early
     */
@@ -54,9 +55,14 @@ impl Chain
 
   pub fn hash_last( &self ) -> Digest
   {
-    let last_block = &self
-                                                  .blocks
-                                                  .last();
+    /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/9
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/chain_test.rs#L98
+    complexity : easy
+    stage : early
+    */
+
+    let last_block = &self.blocks.last();
     let last_block_hash: Digest = match last_block {
       Some(last_block) => last_block.to_owned().body.hash.clone(),
       None => {

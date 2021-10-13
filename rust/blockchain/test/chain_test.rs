@@ -51,6 +51,15 @@ fn chain_init() -> chain::Chain
 #[ ignore ]
 fn new()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/19
+
+    To run test enter :
+    cargo test chain_test::new -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   println!( "empty initial transactions" );
   let chain = chain::Chain::new( vec![] );
   assert_eq!( chain.blocks.len(), 1 );
@@ -88,6 +97,15 @@ fn new()
 #[ ignore ]
 fn hash_last()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/9
+
+    To run test enter :
+    cargo test chain_test::hash_last -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   let chain_original = chain_init();
 
   /* */
