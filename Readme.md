@@ -92,7 +92,9 @@ Please select : .transaction.create
 Sender :
 ```
 
-### Tickets
+### Init diagram
 
-- Implement routine `balance_get()`
--- should return for adresses which do not exist
+The diagram shows the call stack of app functions. The functions on the right side need to be implemented earlier than the functions left of it.
+
+![system_init_diagram](./doc/img/system_init_diagram.png)
+
