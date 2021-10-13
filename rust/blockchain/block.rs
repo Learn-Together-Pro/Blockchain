@@ -36,6 +36,7 @@ impl BlockHeader
   {
     /*
     issue : https://github.com/Learn-Together-Pro/Blockchain/issues/2
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/block_test.rs#L37
     complexity : difficult
     stage : early
     */

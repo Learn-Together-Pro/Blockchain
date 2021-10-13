@@ -18,6 +18,13 @@ impl System
 
   pub fn Make() -> System
   {
+    /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/21
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/system_test.rs#L69
+    complexity : difficult
+    stage : mid
+    */
+
     Self::new()
   }
 
@@ -25,6 +32,13 @@ impl System
 
   pub fn MakePersistant() -> System
   {
+    /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/12
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/system_test.rs#L96
+    complexity : easy
+    stage : mid
+    */
+
     let sys = Self::new();
     sys.store();
     sys
@@ -37,6 +51,7 @@ impl System
     PathBuf::new()
     /*
     issue : https://github.com/Learn-Together-Pro/Blockchain/issues/16
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/system_test.rs#L124
     complexity : mid
     stage : early
     */
@@ -55,7 +70,8 @@ impl System
   pub fn LoadFromFile( _path : &PathBuf ) -> Result< System >
   {
     /*
-    Issue : https://github.com/Learn-Together-Pro/Blockchain/issues/3
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/13
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/system_test.rs#L191
     complexity : mid
     stage : mid
     */
@@ -74,12 +90,10 @@ impl System
   pub fn store_to( &self, _path : &PathBuf )
   {
     /*
-    Issue : https://github.com/Learn-Together-Pro/Blockchain/issues/11
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/11
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/system_test.rs#L256
     complexity : mid
     stage : mid
     */
   }
-
-  //
-
 }

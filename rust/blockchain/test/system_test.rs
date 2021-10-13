@@ -12,6 +12,15 @@ use lt_blockchain::blockchain::{ digest, system };
 #[ ignore ]
 fn new()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/33
+
+    To run test enter :
+    cargo test system_test::new -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   println!( "empty initial transactions" );
   let system = system::System::new();
   assert_eq!( system.chain.blocks.len(), 1 );
@@ -59,6 +68,15 @@ fn valid_is()
 #[ ignore ]
 fn Make()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/21
+
+    To run test enter :
+    cargo test system_test::Make -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   println!( "empty initial transactions" );
   let system = system::System::Make();
   assert_eq!( system.chain.blocks.len(), 1 );
@@ -77,6 +95,15 @@ fn Make()
 #[ ignore ]
 fn MakePersistant()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/12
+
+    To run test enter :
+    cargo test system_test::MakePersistant -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   println!( "empty initial transactions" );
   let system = system::System::MakePersistant();
   assert_eq!( system.chain.blocks.len(), 1 );
@@ -96,6 +123,15 @@ fn MakePersistant()
 #[ ignore ]
 fn StorePathDefault()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/16
+
+    To run test enter :
+    cargo test system_test::StorePathDefault -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   fs::remove_file( system::System::StorePathDefault() ).unwrap_or_default();
 
   /* */
@@ -154,6 +190,15 @@ fn Load()
 #[ serial ]
 fn LoadFromFile()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/13
+
+    To run test enter :
+    cargo test system_test::LoadFromFile -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   fs::remove_file( system::System::StorePathDefault() ).unwrap_or_default();
 
   /* */
@@ -210,6 +255,15 @@ fn store()
 #[ ignore ]
 fn store_to()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/11
+
+    To run test enter :
+    cargo test system_test::store_to -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   let store_path = system::System::StorePathDefault().with_file_name( "store.json" );
   fs::remove_file( &store_path ).unwrap_or_default();
 
