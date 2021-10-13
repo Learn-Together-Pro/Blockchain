@@ -35,6 +35,15 @@ fn from()
 #[ ignore ]
 fn hash_single()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/5
+
+    To run test enter :
+    cargo test digest_test::hash_single -- --ignored
+
+    When test will pass, remove directive `#[ ignore ]`.
+  */
+
   #[ derive( Clone, Serialize, Deserialize ) ]
   struct A
   {
@@ -125,6 +134,15 @@ fn bytes_to_string_hex()
 #[ ignore ]
 fn merkle_calc()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/6
+
+    To run test enter :
+    cargo test digest_test::merkle_calc -- --ignored
+
+    When test will pass, remove directive `#[ ignore ]`.
+  */
+
   fn transaction_empty_create() -> transaction::Transaction
   {
     let transaction_header = transaction::TransactionHeader

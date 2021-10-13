@@ -83,9 +83,11 @@ pub fn hash_single< T : serde::Serialize >( _item : &T ) -> Digest
 {
   /*
     issue : https://github.com/Learn-Together-Pro/Blockchain/issues/5
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/digest_test.rs#L36
     complexity : medium
     stage : early
   */
+
   Digest::new()
 }
 
@@ -100,7 +102,6 @@ pub fn hash_every< T : serde::Serialize + fmt::Debug >( _items : &Vec< T > ) -> 
   */
 
   Digest::new()
-
 }
 
 //
@@ -119,6 +120,7 @@ pub fn merkle_calc( transactions : &Vec< Transaction > ) -> Digest
 {
   /*
   issue : https://github.com/Learn-Together-Pro/Blockchain/issues/6
+  test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/digest_test.rs#L135
   complexity : mid
   stage : early
   */

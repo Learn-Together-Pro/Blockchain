@@ -181,9 +181,10 @@ impl Chain
   pub fn transaction_create( &mut self, _sender : Digest, _receiver : Digest, _amount : f64 )
   {
     /*
-    Issue : https://github.com/Learn-Together-Pro/Blockchain/issues/7
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/7
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/transaction_test.rs#L106
     complexity : difficult
-    stage : mid
+    stage : early
     */
     unimplemented!( "not implemented" );
   }
@@ -195,6 +196,7 @@ impl Chain
     1.0
     /*
     issue : https://github.com/Learn-Together-Pro/Blockchain/issues/1
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/transaction_test.rs#L178
     complexity : difficult
     stage : late
     */

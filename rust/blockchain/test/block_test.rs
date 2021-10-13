@@ -36,6 +36,15 @@ fn form()
 #[ ignore ]
 fn proof_of_work()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/2
+
+    To run test enter :
+    cargo test block_test::proof_of_work -- --ignored
+
+    When test will pass, remove directive `#[ ignore ]`.
+  */
+
   println!( "not formed block" );
   let zero : Vec<u8> = Vec::from([ 0u8 ; 32]);
   let mut block_header = block::BlockHeader
