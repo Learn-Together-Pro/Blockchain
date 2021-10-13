@@ -9,6 +9,7 @@ use lt_blockchain::blockchain::{ digest, system };
 //
 
 #[ test ]
+#[ ignore ]
 fn new()
 {
   println!( "empty initial transactions" );
@@ -25,6 +26,7 @@ fn new()
 //
 
 #[ test ]
+#[ ignore ]
 fn valid_is()
 {
   let system_original = system::System::new();
@@ -54,6 +56,7 @@ fn valid_is()
 //
 
 #[ test ]
+#[ ignore ]
 fn Make()
 {
   println!( "empty initial transactions" );
@@ -71,6 +74,7 @@ fn Make()
 //
 
 #[ test ]
+#[ ignore ]
 fn MakePersistant()
 {
   println!( "empty initial transactions" );
@@ -89,6 +93,7 @@ fn MakePersistant()
 //
 
 #[ test ]
+#[ ignore ]
 fn StorePathDefault()
 {
   fs::remove_file( system::System::StorePathDefault() ).unwrap_or_default();
@@ -115,6 +120,7 @@ fn StorePathDefault()
 //
 
 #[ test ]
+#[ ignore ]
 #[ serial ]
 fn Load()
 {
@@ -144,6 +150,7 @@ fn Load()
 //
 
 #[ test ]
+#[ ignore ]
 #[ serial ]
 fn LoadFromFile()
 {
@@ -175,6 +182,7 @@ fn LoadFromFile()
 //
 
 #[ test ]
+#[ ignore ]
 #[ serial ]
 fn store()
 {
@@ -199,6 +207,7 @@ fn store()
 //
 
 #[ test ]
+#[ ignore ]
 fn store_to()
 {
   let store_path = system::System::StorePathDefault().with_file_name( "store.json" );

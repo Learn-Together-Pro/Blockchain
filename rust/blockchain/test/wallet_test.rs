@@ -7,6 +7,7 @@ use lt_blockchain::blockchain::{ system, wallet };
 //
 
 #[ test ]
+#[ ignore ]
 fn new()
 {
   println!( "add wallet to empty map" );
@@ -51,6 +52,7 @@ fn new()
 
 //
 
+#[ ignore ]
 #[ test ]
 fn keys_pair_generate()
 {
@@ -63,6 +65,7 @@ fn keys_pair_generate()
 //
 
 #[ test ]
+#[ ignore ]
 fn wallet_create()
 {
   let sys = system::System::new();

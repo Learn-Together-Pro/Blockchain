@@ -32,6 +32,7 @@ fn from()
 //
 
 #[ test ]
+#[ ignore ]
 fn hash_single()
 {
   #[ derive( Clone, Serialize, Deserialize ) ]
@@ -78,6 +79,7 @@ fn hash_single()
 //
 
 #[ test ]
+#[ ignore ]
 fn hash_every()
 {
   #[ derive( Debug, Clone, Serialize, Deserialize ) ]
@@ -108,6 +110,7 @@ fn hash_every()
 //
 
 #[ test ]
+#[ ignore ]
 fn bytes_to_string_hex()
 {
   println!( "convert vector of bytes to string" );
@@ -119,6 +122,7 @@ fn bytes_to_string_hex()
 //
 
 #[ test ]
+#[ ignore ]
 fn merkle_calc()
 {
   fn transaction_empty_create() -> transaction::Transaction

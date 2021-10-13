@@ -11,6 +11,7 @@ use lt_blockchain::blockchain::
 //
 
 #[ test ]
+#[ ignore ]
 fn form()
 {
   println!( "check constructor" );
@@ -41,6 +42,7 @@ fn form()
 //
 
 #[ test ]
+#[ ignore ]
 fn new()
 {
   println!( "check constructor" );
@@ -71,6 +73,7 @@ fn new()
 //
 
 #[ test ]
+#[ ignore ]
 fn transaction_create_from_system()
 {
   println!( "transaction from root wallet to another" );
@@ -99,6 +102,7 @@ fn transaction_create_from_system()
 //
 
 #[ test ]
+#[ ignore ]
 fn transaction_create_from_chain()
 {
   let sender = digest::Digest::from( Vec::from( "user".as_bytes() ) );
@@ -170,6 +174,7 @@ fn transaction_create_from_chain()
 //
 
 #[ test ]
+#[ ignore ]
 fn valid_is()
 {
   let sender = digest::Digest::from( Vec::from( "user".as_bytes() ) );

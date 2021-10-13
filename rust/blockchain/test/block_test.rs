@@ -33,6 +33,7 @@ fn form()
 //
 
 #[ test ]
+#[ ignore ]
 fn proof_of_work()
 {
   println!( "not formed block" );
@@ -161,6 +162,7 @@ fn header()
 //
 
 #[ test ]
+#[ ignore ]
 fn valid_is()
 {
   let sender = digest::Digest::from( Vec::from( "user".as_bytes() ) );
