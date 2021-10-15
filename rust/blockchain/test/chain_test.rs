@@ -48,18 +48,8 @@ fn chain_init() -> chain::Chain
 //
 
 #[ test ]
-#[ ignore ]
 fn new()
 {
-  /*
-    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/19
-
-    To run test enter :
-    cargo test chain_test::new -- --ignored
-
-    When test will pass, comment out directive `#[ ignore ]`.
-  */
-
   println!( "empty initial transactions" );
   let chain = chain::Chain::new( vec![] );
   assert_eq!( chain.blocks.len(), 1 );
