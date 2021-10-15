@@ -6,7 +6,7 @@ use super::transaction::*;
 use std::borrow::{ Borrow, BorrowMut };
 
 #[ repr( C ) ]
-#[ derive( Debug, Clone, Serialize, Deserialize ) ]
+#[ derive( Debug, Clone, Serialize, Deserialize, PartialEq ) ]
 pub struct BlockGeneric< Body >
 {
   pub time : i64,
@@ -19,7 +19,7 @@ pub struct BlockGeneric< Body >
 
 pub type BlockHeader = BlockGeneric< () >;
 
-#[ derive( Debug, Clone, Serialize, Deserialize ) ]
+#[ derive( Debug, Clone, Serialize, Deserialize, PartialEq ) ]
 pub struct BlockBody
 {
   pub transactions : Vec< Transaction >,
@@ -36,6 +36,7 @@ impl BlockHeader
   {
     /*
     issue : https://github.com/Learn-Together-Pro/Blockchain/issues/2
+    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/block_test.rs#L37
     complexity : difficult
     stage : early
     */
@@ -70,11 +71,42 @@ impl Block
     }
   }
 
-  pub fn header( &mut self ) -> &mut BlockHeader
+  //
+
+  pub fn header( &self ) -> &BlockHeader
+  {
+    self.borrow()
+  }
+
+  //
+
+  pub fn header_mut( &mut self ) -> &mut BlockHeader
   {
     self.borrow_mut()
   }
 
+  //
+
+  pub fn valid_is( &self ) -> bool
+  {
+    let valid = self.body.transactions.iter().all( | e | e.valid_is() );
+    if !valid
+    {
+      return false;
+    }
+
+    let merkle_hash = merkle_calc( &self.body.transactions );
+    if merkle_hash != self.merkle_hash
+    {
+      return false;
+    }
+
+    if hash_single( &self.header() ) != self.body.hash
+    {
+      return false;
+    }
+    true
+  }
 }
 
 //

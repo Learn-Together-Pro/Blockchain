@@ -4,13 +4,23 @@
 use std::fs;
 use serial_test::*;
 
-use lt_blockchain::blockchain::system;
+use lt_blockchain::blockchain::{ digest, system };
 
 //
 
 #[ test ]
+#[ ignore ]
 fn new()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/33
+
+    To run test enter :
+    cargo test system_test::new -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   println!( "empty initial transactions" );
   let system = system::System::new();
   assert_eq!( system.chain.blocks.len(), 1 );
@@ -25,8 +35,48 @@ fn new()
 //
 
 #[ test ]
+#[ ignore ]
+fn valid_is()
+{
+  let system_original = system::System::new();
+
+  /* */
+
+  println!( "valid system" );
+  let system = system_original.clone();
+  let got = system.valid_is();
+  assert_eq!( got, true );
+
+  println!( "system has no root wallet" );
+  let mut system = system_original.clone();
+  system.wallets.remove( &String::from( "root" ) ).unwrap();
+  let got = system.valid_is();
+  assert_eq!( got, false );
+
+  println!( "system has invalid public key of root wallet" );
+  let mut system = system_original.clone();
+  let key = digest::Digest::from( Vec::from([ 0u8 ; 270 ]) );
+  let mut root_wallet = system.wallets.get_mut( &String::from( "root" ) ).unwrap();
+  root_wallet.public_key = key;
+  let got = system.valid_is();
+  assert_eq!( got, false );
+}
+
+//
+
+#[ test ]
+#[ ignore ]
 fn Make()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/21
+
+    To run test enter :
+    cargo test system_test::Make -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   println!( "empty initial transactions" );
   let system = system::System::Make();
   assert_eq!( system.chain.blocks.len(), 1 );
@@ -42,8 +92,18 @@ fn Make()
 //
 
 #[ test ]
+#[ ignore ]
 fn MakePersistant()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/12
+
+    To run test enter :
+    cargo test system_test::MakePersistant -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   println!( "empty initial transactions" );
   let system = system::System::MakePersistant();
   assert_eq!( system.chain.blocks.len(), 1 );
@@ -60,8 +120,18 @@ fn MakePersistant()
 //
 
 #[ test ]
+#[ ignore ]
 fn StorePathDefault()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/16
+
+    To run test enter :
+    cargo test system_test::StorePathDefault -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   fs::remove_file( system::System::StorePathDefault() ).unwrap_or_default();
 
   /* */
@@ -86,6 +156,7 @@ fn StorePathDefault()
 //
 
 #[ test ]
+#[ ignore ]
 #[ serial ]
 fn Load()
 {
@@ -115,9 +186,19 @@ fn Load()
 //
 
 #[ test ]
+#[ ignore ]
 #[ serial ]
 fn LoadFromFile()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/13
+
+    To run test enter :
+    cargo test system_test::LoadFromFile -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   fs::remove_file( system::System::StorePathDefault() ).unwrap_or_default();
 
   /* */
@@ -146,6 +227,7 @@ fn LoadFromFile()
 //
 
 #[ test ]
+#[ ignore ]
 #[ serial ]
 fn store()
 {
@@ -170,8 +252,18 @@ fn store()
 //
 
 #[ test ]
+#[ ignore ]
 fn store_to()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/11
+
+    To run test enter :
+    cargo test system_test::store_to -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   let store_path = system::System::StorePathDefault().with_file_name( "store.json" );
   fs::remove_file( &store_path ).unwrap_or_default();
 

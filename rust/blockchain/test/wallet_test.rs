@@ -7,8 +7,18 @@ use lt_blockchain::blockchain::{ system, wallet };
 //
 
 #[ test ]
+#[ ignore ]
 fn new()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/4
+
+    To run test enter :
+    cargo test wallet_test::new -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   println!( "add wallet to empty map" );
   let mut wallets_map : HashMap<String, wallet::Wallet> = HashMap::new();
   let name = String::from( "user" );
@@ -51,9 +61,19 @@ fn new()
 
 //
 
+#[ ignore ]
 #[ test ]
 fn keys_pair_generate()
 {
+  /*
+    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/3
+
+    To run test enter :
+    cargo test wallet_test::keys_pair_generate -- --ignored
+
+    When test will pass, comment out directive `#[ ignore ]`.
+  */
+
   println!( "generate pair of keys" );
   let ( public_key, private_key ) = wallet::Wallet::keys_pair_generate();
   assert_eq!( public_key.len(), 270 );
@@ -63,6 +83,7 @@ fn keys_pair_generate()
 //
 
 #[ test ]
+#[ ignore ]
 fn wallet_create()
 {
   let sys = system::System::new();
