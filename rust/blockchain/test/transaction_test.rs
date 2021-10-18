@@ -168,6 +168,7 @@ fn transaction_create_from_chain()
     assert_eq!( v.sender, sender.clone() );
     let mut receiver_expected = HashMap::new();
     receiver_expected.insert( digest::Digest::from( Vec::from([ 1u8 ; 32 ]) ), 0.0 );
+    receiver_expected.insert( sender.clone(), 0.0 );
     assert_eq!( v.receiver, receiver_expected );
     assert_eq!( v.amount, 0.0 );
   }
