@@ -35,19 +35,20 @@ impl Chain
 
     Chain
     {
-      blocks : Vec::new(),
+      blocks : vec![Block
+                    {
+                      time: wt::time::s::now(),
+                      nonce: 0,
+                      pre_hash: vec![0u8; 32].into(),
+                      merkle_hash: Digest::new(),
+                      difficulty: 2,
+                      body: BlockBody{transactions: _transactions, hash: Digest::new()}
+                    }],
       transactions_pool : HashMap::new(),
       difficulty : 2,
       miner_addr : Digest::from( Vec::from( "Miner1".as_bytes() ) ),
       reward : 100.0
     }
-
-    /*
-    issue : https://github.com/Learn-Together-Pro/Blockchain/issues/19
-    test : https://github.com/Learn-Together-Pro/Blockchain/blob/main/rust/blockchain/test/system_test.rs#L52
-    complexity : mid
-    stage : early
-    */
 
   }
 
